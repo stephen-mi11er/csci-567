@@ -1,0 +1,14 @@
+name: lab-1-567
+
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lab-1-seed-ubuntu
+    develop:
+      watch:
+        - action: sync
+          path: ./
+          target: /app/
+    command: ["tail", "-f", "/dev/null"]
