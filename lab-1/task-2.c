@@ -17,8 +17,8 @@ void main()
     switch (childPid = fork())
     {
     case 0: /* child process */
-        // printf("Child process:\n");
-        // printenv();
+        printf("Child process:\n");
+        printenv();
         exit(0);
     default: /* parent process */
         printf("Parent process:\n");
