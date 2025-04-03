@@ -11,5 +11,8 @@ call-shellcode: call-shellcode.c
 shellcode: shellcode.c
 	$(CC) $(CFLAGS) -o shellcode shellcode.c
 
+stack: stack.c
+	$(CC) $(CFLAGS) -o stack stack.c
+
 clean:
 	rm -f call-shellcode shellcode
