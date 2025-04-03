@@ -1,21 +1,17 @@
 # Makefile for compiling shellcode programs
 
 CC = gcc
-CFLAGS = -z execstack -fno-stack-protector
 
-all: call-shellcode shellcode stack exploit
+all: call-shellcode exploit
 
 call-shellcode: call-shellcode.c
-	$(CC) $(CFLAGS) -o call-shellcode call-shellcode.c
-
-shellcode: shellcode.c
-	$(CC) $(CFLAGS) -o shellcode shellcode.c
+	$(CC) -z execstack -o call-shellcode call-shellcode.c
 
 stack: stack.c
-	$(CC) $(CFLAGS) -o stack stack.c
+	$(CC) -o stack -z execstack -fno-stack-protector stack.c
 
 exploit: exploit.c
-	$(CC) $(CFLAGS) -o exploit exploit.c
+	$(CC) -o exploit exploit.c
 
 clean:
-	rm -f call-shellcode shellcode stack exploit
+	rm -f call-shellcode badfile stack exploit
